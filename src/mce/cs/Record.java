@@ -13,7 +13,6 @@ public class Record {
 	
 	Record(Dictionary row){
 		Attributes var = new Attributes();
-		System.out.println(row);
 		this.gender.put(row.get(0), var.variables.get(row.get(0)));
 		this.family.put(row.get(1), var.variables.get(row.get(1)));
 		this.smoker.put(row.get(2), var.variables.get(row.get(3)));

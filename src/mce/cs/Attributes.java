@@ -15,7 +15,6 @@ public class Attributes {
 		this.variables.put("AAVG",1 );
 		this.variables.put("BAVG",2 );
 		this.variables.put("HIGH",3 );
-		System.out.println(this.variables);
 	}
 	
 }
