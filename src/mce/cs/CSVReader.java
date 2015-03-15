@@ -16,8 +16,9 @@ public class CSVReader {
 		String line = "";
 		String cvsSplitBy = ",";
 		ArrayList<VectorRep> col = new ArrayList<VectorRep>();
-		VectorRep v = new VectorRep();
+		
 		for(int i=0; i<7;i++){
+			VectorRep v = new VectorRep();
 			col.add(v);
 		}
 		try {
