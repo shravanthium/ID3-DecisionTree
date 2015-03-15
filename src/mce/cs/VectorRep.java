@@ -1,31 +1,34 @@
 package mce.cs;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class VectorRep {
 	Vector v;
-	VectorRep(Dictionary row){
-		Attributes var = new Attributes();
+	
+	VectorRep(){
 		this.v = new Vector();
-		v.addElement(var.variables.get(row.get(0)));
-		v.addElement(var.variables.get(row.get(1)));
-		v.addElement(var.variables.get(row.get(2)));
-		v.addElement(var.variables.get(row.get(3)));
-		v.addElement(var.variables.get(row.get(4)));		
-		int yr = (int) row.get(5);
-		if(yr == 1){
-			v.addElement(var.variables.get("A"));
+	}
+	public void add(String elem){
+		Attributes var = new Attributes();
+		try{
+			if(Integer.parseInt(elem) == 1){
+				v.addElement(var.variables.get("A"));
+			}
+			else if(Integer.parseInt(elem) <= 5){
+				v.addElement(var.variables.get("B"));
+			}
+			else if(Integer.parseInt(elem) <=20){
+				v.addElement(var.variables.get("C"));
+			}
+			else if (Integer.parseInt(elem) >20){
+				v.addElement(var.variables.get("D"));			
+			}
+			}
+		catch (NumberFormatException e){
+			
+			v.addElement(var.variables.get(elem));		
 		}
-		else if(yr <= 5){
-			v.addElement(var.variables.get("B"));
-		}
-		else if(yr <=20){
-			v.addElement(var.variables.get("C"));
-		}
-		else{
-			v.addElement(var.variables.get("D"));			
-		}
-		v.addElement(var.variables.get(row.get(6)));	
 	}
 
 	

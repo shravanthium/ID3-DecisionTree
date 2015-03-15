@@ -15,24 +15,25 @@ public class CSVReader {
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
-		ArrayList records = new ArrayList();
+		ArrayList<VectorRep> records = new ArrayList<VectorRep>();
+		VectorRep v = new VectorRep();
+		for(int i=0; i<10;i++){
+			records.add(i, v);
+		}
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
   		  	Compute ent = new Compute();
 			while ((line = br.readLine()) != null) {
 				String[] st = line.split(cvsSplitBy); 
-				Dictionary dict = new Hashtable();
-	  		  	dict.put(0, st[0]);
-	  		  	dict.put(1, st[1]);
-	  		  	dict.put(2, st[2]);
-	  		  	dict.put(3, st[3]);
-	  		  	dict.put(4, st[4]);
-	  		  	dict.put(5, Integer.parseInt(st[5]));
-	  		  	dict.put(6, st[6]);
-	  		  	VectorRep r = new VectorRep(dict); 
-	  		  	records.add(r);
-	  		  	System.out.print("Entropy("+line+"):"+ent.entropy(r)+"\n");
+	  		  	records.get(0).add(st[0]);
+	  		  	records.get(1).add(st[1]);
+	  		  	records.get(2).add(st[2]);
+	  		  	records.get(3).add(st[3]);
+	  		  	records.get(4).add(st[4]);
+	  		  	records.get(5).add(st[5]);
+	  		  	records.get(6).add(st[6]);
 			}
+			System.out.print(records.get(0).v.toString()+"\n");
   		  System.out.print("Gain :"+ent.gain(records));
 
 	 
