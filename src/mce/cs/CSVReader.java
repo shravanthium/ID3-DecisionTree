@@ -15,26 +15,26 @@ public class CSVReader {
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
-		ArrayList<VectorRep> records = new ArrayList<VectorRep>();
+		ArrayList<VectorRep> col = new ArrayList<VectorRep>();
 		VectorRep v = new VectorRep();
-		for(int i=0; i<10;i++){
-			records.add(i, v);
+		for(int i=0; i<7;i++){
+			col.add(v);
 		}
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
   		  	Compute ent = new Compute();
 			while ((line = br.readLine()) != null) {
 				String[] st = line.split(cvsSplitBy); 
-	  		  	records.get(0).add(st[0]);
-	  		  	records.get(1).add(st[1]);
-	  		  	records.get(2).add(st[2]);
-	  		  	records.get(3).add(st[3]);
-	  		  	records.get(4).add(st[4]);
-	  		  	records.get(5).add(st[5]);
-	  		  	records.get(6).add(st[6]);
+	  		  	col.get(0).add(st[0]);
+	  		  	col.get(1).add(st[1]);
+	  		  	col.get(2).add(st[2]);
+	  		  	col.get(3).add(st[3]);
+	  		  	col.get(4).add(st[4]);
+	  		  	col.get(5).add(st[5]);
+	  		  	col.get(6).add(st[6]);
 			}
-			System.out.print(records.get(0).v.toString()+"\n");
-  		  System.out.print("Gain :"+ent.gain(records));
+			System.out.print(col.get(0).v.size()+"\n");
+  		  System.out.print("Gain :"+ent.gain(col));
 
 	 
 		} catch (FileNotFoundException e) {
