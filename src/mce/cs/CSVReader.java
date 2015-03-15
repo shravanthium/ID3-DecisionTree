@@ -18,6 +18,7 @@ public class CSVReader {
 		ArrayList records = new ArrayList();
 		try {
 			br = new BufferedReader(new FileReader(csvFile));
+  		  	Compute ent = new Compute();
 			while ((line = br.readLine()) != null) {
 				String[] st = line.split(cvsSplitBy); 
 				Dictionary dict = new Hashtable();
@@ -28,9 +29,12 @@ public class CSVReader {
 	  		  	dict.put(4, st[4]);
 	  		  	dict.put(5, Integer.parseInt(st[5]));
 	  		  	dict.put(6, st[6]);
-	  		  	Record r = new Record(dict); 
-	  		  System.out.println(st); 
+	  		  	VectorRep r = new VectorRep(dict); 
+	  		  	records.add(r);
+	  		  	System.out.print("Entropy("+line+"):"+ent.entropy(r)+"\n");
 			}
+  		  System.out.print("Gain :"+ent.gain(records));
+
 	 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -45,6 +49,5 @@ public class CSVReader {
 				}
 			}
 		}
-		System.out.println("Done");
 	 } 
 }

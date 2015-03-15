@@ -15,7 +15,7 @@ public class Record {
 		Attributes var = new Attributes();
 		this.gender.put(row.get(0), var.variables.get(row.get(0)));
 		this.family.put(row.get(1), var.variables.get(row.get(1)));
-		this.smoker.put(row.get(2), var.variables.get(row.get(3)));
+		this.smoker.put(row.get(2), var.variables.get(row.get(2)));
 		this.passive_smoker.put(row.get(3), var.variables.get(row.get(4)));
 		this.chemicals.put(row.get(4), var.variables.get(row.get(4)));
 		
