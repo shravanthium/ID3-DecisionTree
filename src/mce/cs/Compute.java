@@ -24,18 +24,19 @@ public class Compute {
 	
 	public static Map bayes_freq(VectorRep var,VectorRep clasLabel){
 		
-		Map map = new HashMap();
+		Map<Integer, VectorRep> map = new HashMap();
 		Enumeration enum1 = var.v.elements();
-		Set set = new HashSet((Collection) enum1);
-		while(set.iterator().hasNext()){
-			map.put(set.iterator().next(), new VectorRep());
+
+		while(enum1.hasMoreElements()){
+			map.put((Integer) enum1.nextElement(), new VectorRep());
 		}
 		Enumeration enum2 = clasLabel.v.elements();
-		for(int i=0; i<clasLabel.v.size();i++){
-			VectorRep vec = (VectorRep) map.get(enum1.nextElement());
+		while(enum2.hasMoreElements() && enum1.hasMoreElements()){
+			int value = (int) enum1.nextElement();
+			VectorRep vec = (VectorRep) map.get(value);
 			int key= (int) enum2.nextElement();
 			vec.v.add(key);
-			map.put(enum1, vec);
+			map.put(value, vec);
 		}
 		return map;
 

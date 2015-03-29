@@ -34,7 +34,7 @@ public class CSVReader {
 	  		  	col.get(5).add(st[5]);
 	  		  	col.get(6).add(st[6]);
 			}
-			System.out.print(col.get(0).v.size()+"\n");
+			System.out.print("Column Size:" +col.get(0).v.size()+"\n");
   		  System.out.print("Gain :"+ent.gain(col));
 
 	 
