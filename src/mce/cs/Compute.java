@@ -30,14 +30,15 @@ public class Compute {
 		while(enum1.hasMoreElements()){
 			map.put((Integer) enum1.nextElement(), new VectorRep());
 		}
-		Enumeration enum2 = clasLabel.v.elements();
-		while(enum2.hasMoreElements() && enum1.hasMoreElements()){
-			int value = (int) enum1.nextElement();
+
+		for(int i=0;i<var.v.size();i++){
+			int value = (int) var.v.elementAt(i);
 			VectorRep vec = (VectorRep) map.get(value);
-			int key= (int) enum2.nextElement();
+			int key= (int) clasLabel.v.elementAt(i);
 			vec.v.add(key);
 			map.put(value, vec);
 		}
+
 		return map;
 
 	}
@@ -58,7 +59,7 @@ public class Compute {
 	public static double gain(List <VectorRep> values){
 		double result = 0;
 		double label_entropy = entropy(values.get(values.size()-1));
-		
+		System.out.println("Label Entropy :"+label_entropy);
 		double gain=0;
 		for(int i=0; i<values.size()-1;i++){
 			Map map = bayes_freq(values.get(i),values.get(values.size()-1));
@@ -66,7 +67,7 @@ public class Compute {
 			List freq = probability(values.get(i));
 			for(Object seq: map.keySet()){
 				double item = (double) freq.iterator().next();
-				g	-= label_entropy -(double) entropy((VectorRep)map.get(seq));
+				g	= label_entropy -(double) entropy((VectorRep)map.get(seq));
 			}
 			System.out.print((i+1)+" : "+g+"\n");
 			if (g>gain){
